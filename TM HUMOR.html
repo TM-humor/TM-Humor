@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HUMOR — Fortnite Stats</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background: #080b18;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 10%,
+            rgba(100, 90, 230, .32),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 10% 80%,
+            rgba(120, 60, 220, .20),
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 90% 70%,
+            rgba(40, 120, 220, .18),
+            transparent 50%
+        ),
+        linear-gradient(
+            180deg,
+            #10152c,
+            #0b1022 55%,
+            #080b18
+        );
+}
+
+.sky-glow {
+    position: absolute;
+    width: 70vw;
+    height: 40vh;
+    top: -10vh;
+    left: 15vw;
+
+    background: radial-gradient(
+        ellipse,
+        rgba(140, 130, 255, .30),
+        transparent 70%
+    );
+
+    filter: blur(40px);
+
+    animation: skyMove 10s ease-in-out infinite alternate;
+}
+
+@keyframes skyMove {
+    from {
+        transform: translateX(-3%) scale(1);
+    }
+
+    to {
+        transform: translateX(3%) scale(1.08);
+    }
+}
+
+.glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .18;
+}
+
+.glow-purple {
+    background: #8d5cff;
+    left: -150px;
+    top: 35%;
+}
+
+.glow-blue {
+    background: #3b9cff;
+    right: -150px;
+    top: 55%;
+}
+
+.vignette {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 30%,
+            rgba(0,0,0,.4)
+        );
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
+
+.screen {
+    min-height: 100vh;
+    padding: 25px 0 80px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    border-radius: 20px;
+
+    background: rgba(10, 13, 32, .65);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+}
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo-box {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8d6aff,
+            #4d8cff
+        );
+
+    box-shadow:
+        0 0 25px rgba(120,90,255,.4);
+
+    font-size: 15px;
+}
+
+.logo span {
+    color: #9274ff;
+}
+
+/* NAV LINKS */
+
+.nav-links {
+    display: flex;
+    gap: 5px;
+}
+
+.nav-link {
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    color: #858699;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    transition: .25s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: white;
+    background: rgba(255,255,255,.07);
+}
+
+/* STATUS */
+
+.nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    border-radius: 999px;
+
+    background: rgba(83,230,155,.06);
+
+    border: 1px solid rgba(83,230,155,.14);
+
+    color: #999aab;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #53e69b;
+
+    box-shadow: 0 0 12px #53e69b;
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100% {
+        opacity: .5;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+
+    text-align: center;
+
+    padding: 110px 0 90px;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 350px;
+
+    left: 50%;
+    top: 20px;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(120,90,255,.30),
+            transparent 70%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* SMALL TITLE */
+
+.hero-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    margin-bottom: 22px;
+
+    border-radius: 999px;
+
+    color: #b9aaff;
+
+    background: rgba(139,92,246,.08);
+
+    border: 1px solid rgba(139,92,246,.2);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+/* MAIN TITLE */
+
+.hero h1 {
+    font-size: clamp(70px, 13vw, 150px);
+
+    line-height: .82;
+
+    letter-spacing: -9px;
+
+    font-weight: 950;
+
+    text-shadow:
+        0 0 45px rgba(130,100,255,.2);
+}
+
+.hero h1 span {
+    color: #9274ff;
+
+    text-shadow:
+        0 0 40px rgba(130,100,255,.6);
+}
+
+.hero p {
+    max-width: 590px;
+
+    margin: 30px auto 0;
+
+    color: #9697aa;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 32px;
+}
+
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 13px 20px;
+
+    border-radius: 13px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8c6aff,
+            #586cff
+        );
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 12px 35px rgba(100,80,255,.25);
+
+    transition: .25s;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 45px rgba(100,80,255,.4);
+}
+
+.hero-button.secondary {
+    background: rgba(255,255,255,.05);
+    border-color: rgba(255,255,255,.08);
+    color: #aaaabd;
+    box-shadow: none;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.section-count {
+    color: #66687a;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* =========================
+   PLAYER CARD
+========================= */
+
+.player-card {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 22px;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.035)
+        );
+
+    border: 1px solid rgba(255,255,255,.11);
+
+    backdrop-filter: blur(20px);
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: .35s;
+}
+
+.player-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 300px;
+
+    right: -200px;
+    top: -180px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(130,90,255,.40),
+            transparent 70%
+        );
+
+    filter: blur(30px);
+}
+
+.player-card:hover {
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(139,92,246,.4);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.35),
+        0 0 50px rgba(100,80,255,.08);
+}
+
+/* PLAYER INFO */
+
+.player-info {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.avatar {
+    position: relative;
+
+    width: 75px;
+    height: 75px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 21px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8066ff,
+            #4d8cff
+        );
+
+    font-size: 31px;
+
+    box-shadow:
+        0 0 35px rgba(116,91,255,.35);
+}
+
+.avatar::after {
+    content: "";
+
+    position: absolute;
+
+    right: -2px;
+    bottom: -2px;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #53e69b;
+
+    border: 3px solid #11152b;
+
+    box-shadow:
+        0 0 12px #53e69b;
+}
+
+.player-name {
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.player-meta {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 8px;
+}
+
+.platform {
+    padding: 5px 8px;
+
+    border-radius: 7px;
+
+    background: rgba(255,255,255,.05);
+
+    border: 1px solid rgba(255,255,255,.07);
+
+    color: #aaaabd;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.online {
+    color: #65e9a4;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+/* STATS */
+
+.player-stats {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.mini-stat {
+    padding: 13px 15px;
+
+    border-radius: 14px;
+
+    background: rgba(0,0,0,.13);
+
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.mini-label {
+    color: #707183;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.mini-value {
+    margin-top: 5px;
+
+    font-size: 21px;
+    font-weight: 950;
+}
+
+.kd {
+    color: #b5a4ff;
+}
+
+.win {
+    color: #76efb1;
+}
+
+/* BUTTON */
+
+.profile-button {
+    position: relative;
+    z-index: 1;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    color: #d4ccff;
+
+    background: rgba(139,92,246,.12);
+
+    border: 1px solid rgba(139,92,246,.25);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    white-space: nowrap;
+
+    transition: .25s;
+}
+
+.player-card:hover .profile-button {
+    background: rgba(139,92,246,.22);
+
+    border-color:
+        rgba(139,92,246,.4);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .player-card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .profile-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .screen {
+        padding-top: 15px;
+    }
+
+    .navbar {
+        height: 60px;
+        padding: 0 12px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo-box {
+        width: 31px;
+        height: 31px;
+    }
+
+    .nav-status {
+        padding: 8px 10px;
+    }
+
+    .nav-status span:last-child {
+        display: none;
+    }
+
+    .hero {
+        padding: 80px 0 65px;
+    }
+
+    .hero h1 {
+        letter-spacing: -6px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-button {
+        width: 200px;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .player-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+
+        padding: 18px;
+    }
+
+    .player-stats {
+        width: 100%;
+    }
+
+    .profile-button {
+        width: 100%;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- BACKGROUND -->
+
+<div class="background">
+
+    <div class="sky-glow"></div>
+
+    <div class="glow glow-purple"></div>
+
+    <div class="glow glow-blue"></div>
+
+    <div class="vignette"></div>
+
+</div>
+
+
+<!-- PAGE -->
+
+<section class="screen">
+
+<div class="container">
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-box">
+            H
+        </div>
+
+        HUM<span>O</span>R
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a
+            href="#"
+            class="nav-link active"
+        >
+            Accueil
+        </a>
+
+        <a
+            href="#players"
+            class="nav-link"
+        >
+            Joueurs
+        </a>
+
+        <a
+            href="#"
+            class="nav-link"
+        >
+            Statistiques
+        </a>
+
+    </div>
+
+
+    <div class="nav-status">
+
+        <span class="status-dot"></span>
+
+        <span>
+            Système opérationnel
+        </span>
+
+    </div>
+
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+
+        <div class="hero-small">
+            ✦ FORTNITE STATS
+        </div>
+
+
+        <h1>
+            HUM<span>O</span>R
+        </h1>
+
+
+        <p>
+            Découvre les statistiques de tes joueurs
+            Fortnite préférés. K/D, Win Rate,
+            victoires et performances dans une
+            interface gaming premium.
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+            <a
+                href="#players"
+                class="hero-button"
+            >
+                Voir les joueurs →
+            </a>
+
+
+            <a
+                href="https://fortnitetracker.com/"
+                target="_blank"
+                class="hero-button secondary"
+            >
+                Fortnite Tracker ↗
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================
+     PLAYERS
+========================= -->
+
+<section id="players">
+
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+            Joueurs suivis
+        </h2>
+
+        <span class="section-count">
+            1 joueur disponible
+        </span>
+
+    </div>
+
+
+    <div
+        class="player-card"
+        onclick="openProfile()"
+    >
+
+
+        <!-- PLAYER -->
+
+        <div class="player-info">
+
+
+            <div class="avatar">
+                🎮
+            </div>
+
+
+            <div>
+
+                <div class="player-name">
+                    YTBJuliuszeboss
+                </div>
+
+
+                <div class="player-meta">
+
+                    <span class="platform">
+                        🎮 PC
+                    </span>
+
+                    <span class="online">
+                        ● En ligne
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="player-stats">
+
+
+            <div class="mini-stat">
+
+                <div class="mini-label">
+                    K/D
+                </div>
+
+                <div class="mini-value kd">
+                    5.25
+                </div>
+
+            </div>
+
+
+            <div class="mini-stat">
+
+                <div class="mini-label">
+                    WIN RATE
+                </div>
+
+                <div class="mini-value win">
+                    17%
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BUTTON -->
+
+        <div class="profile-button">
+            Voir le profil →
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</div>
+
+</section>
+
+
+<script>
+
+function openProfile() {
+
+    alert("Le profil sera ajouté juste après cette étape 🔥");
+
+}
+
+</script>
+
+
+</body>
+
+</html>
